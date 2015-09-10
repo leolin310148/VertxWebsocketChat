@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="ChatApp">
+<div ng-controller="chatCtrl">
+    <form ng-submit="sendMessage()">
+        <input type="text" ng-model="message"/>
+    </form>
+
+    <hr/>
+
+    <div ng-repeat="msg in msgs">
+        <span ng-bind="msg"></span>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="webjars/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</html>

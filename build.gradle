@@ -1,0 +1,66 @@
+group 'me.leolin'
+version ''
+
+apply plugin: 'groovy'
+apply plugin: 'kotlin'
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+springBoot {
+    mainClass = 'me.leolin.LeolinPackage'
+}
+
+bootRun {
+//    jvmArgs = ['-Xdebug', '-Xrunjdwp:server=y,transport=dt_socket,address=5005,suspend=y']
+}
+
+
+jar {
+    baseName = 'VertxWebsocketChat'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+    compile 'io.vertx:vertx-core:3.0.0'
+    compile 'io.vertx:vertx-web:3.0.0'
+
+
+    compile 'org.webjars.bower:bootstrap:3.3.5'
+    compile 'org.webjars:angularjs:1.4.4'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+}
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+    ext {
+        kotlin_version = '0.12.1230'
+        springBootVersion = '1.2.5.RELEASE'
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+
